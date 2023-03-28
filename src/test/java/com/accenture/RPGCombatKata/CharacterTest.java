@@ -96,4 +96,18 @@ class CharacterTest {
         assertEquals(1000L,pc.getHealth());
     }
 
+    @Test
+    void characterCanOnlyHealItself(){
+        //given
+        var pc=new Character();
+        var ally=new Character();
+        pc.damage(500L);
+        ally.damage(500L);
+        //when
+        pc.heal(pc,50L);
+        pc.heal(ally,50L);
+        //then
+        assertEquals(550L,pc.getHealth());
+        assertEquals(500L,ally.getHealth());
+    }
 }
