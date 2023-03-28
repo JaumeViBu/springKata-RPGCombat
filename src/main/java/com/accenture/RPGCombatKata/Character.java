@@ -37,6 +37,6 @@ public class Character {
     }
 
     public void regen(Long healthToRegen){
-        this.health+=healthToRegen;
+        if(this.alive)this.health+=healthToRegen;
     }
 }
