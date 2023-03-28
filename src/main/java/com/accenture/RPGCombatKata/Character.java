@@ -18,8 +18,12 @@ public class Character {
         return this.alive;
     }
 
+    public void setLevel(Long level) {
+        this.level = level;
+    }
+
     public void dealsDamage(Character target, long damageValue) {
-        if(this!=target)target.damage(damageValue);
+        if(this!=target)target.damage(target.getLevel()>=this.getLevel()+5?(long)(damageValue*0.5):damageValue);
     }
 
     public void damage(Long damage){

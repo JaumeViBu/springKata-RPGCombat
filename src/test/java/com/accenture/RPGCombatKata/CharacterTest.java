@@ -114,14 +114,16 @@ class CharacterTest {
         //given
         var lvl1=new Character();
         var lvl10=new Character();
-        lvl10.setLevel(10);
+        lvl10.setLevel(10L);
         var enemy1=new Character();
         var enemy2=new Character();
+        enemy1.setLevel(7L);
+        enemy2.setLevel(7L);
         //when
         lvl1.dealsDamage(enemy1,100L);
         lvl10.dealsDamage(enemy2,100L);
         //then
-        assertEquals(900L,enemy1.getHealth());
-        assertEquals(850L,enemy2.getHealth());
+        assertEquals(950L,enemy1.getHealth());
+        assertEquals(900L,enemy2.getHealth());
     }
 }
