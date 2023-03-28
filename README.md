@@ -7,7 +7,7 @@
     -[x] Level, starting at 1
     -[x] May be Alive or Dead, starting Alive (Alive may be a true/false)
 -[ ] Characters can Deal Damage to Characters:
-    -[ ] Damage is subtracted from Health
+    -[x] Damage is subtracted from Health
     -[ ] When damage received exceeds current Health, Health becomes 0 and the character dies
 -[ ] A Character can Heal a Character:
     -[ ] Dead characters cannot be healed

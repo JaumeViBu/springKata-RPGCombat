@@ -35,4 +35,6 @@ class CharacterTest {
         //then
         assertEquals(950L,enemy.getHealth());
     }
+
+
 }

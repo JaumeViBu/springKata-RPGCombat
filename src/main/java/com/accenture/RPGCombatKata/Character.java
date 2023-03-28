@@ -18,4 +18,11 @@ public class Character {
         return this.alive;
     }
 
+    public void dealsDamage(Character target, long damageValue) {
+        target.damage(damageValue);
+    }
+
+    public void damage(Long damage){
+        this.health-=damage;
+    }
 }
