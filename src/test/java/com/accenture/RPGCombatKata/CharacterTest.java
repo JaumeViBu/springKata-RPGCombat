@@ -24,4 +24,15 @@ class CharacterTest {
         assertEquals(1L,initialLevel);
         assertEquals(true,isAlive);
     }
+
+    @Test
+    void charactersCanDealDamageToCharacters(){
+        //given
+        var pc=new Character();
+        var enemy=new Character();
+        //when
+        pc.dealsDamage(enemy,50L);
+        //then
+        assertEquals(950L,enemy.getHealth());
+    }
 }
