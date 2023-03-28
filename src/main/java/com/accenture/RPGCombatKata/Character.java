@@ -38,5 +38,6 @@ public class Character {
 
     public void regen(Long healthToRegen){
         if(this.alive)this.health+=healthToRegen;
+        if(this.getHealth()>1000L)this.health=1000L;
     }
 }
