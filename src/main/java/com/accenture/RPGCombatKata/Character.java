@@ -30,6 +30,13 @@ public class Character {
             this.health=0L;
             this.alive=false;
         }
+    }
 
+    public void heal(Character target,Long healingValue){
+        target.regen(healingValue);
+    }
+
+    public void regen(Long healthToRegen){
+        this.health+=healthToRegen;
     }
 }
