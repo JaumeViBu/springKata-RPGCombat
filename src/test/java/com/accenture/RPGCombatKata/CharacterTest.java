@@ -85,4 +85,15 @@ class CharacterTest {
         //then
         assertEquals(1000L,ally.getHealth());
     }
+
+    @Test
+    void characterCannotDealDamageToItself(){
+        //given
+        var pc=new Character();
+        //when
+        pc.dealsDamage(pc,500L);
+        //then
+        assertEquals(1000L,pc.getHealth());
+    }
+
 }
