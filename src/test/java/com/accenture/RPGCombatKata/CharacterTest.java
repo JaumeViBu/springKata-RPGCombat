@@ -47,4 +47,16 @@ class CharacterTest {
         assertEquals(0L,enemy.getHealth());
         assertEquals(false,enemy.isAlive());
     }
+
+    @Test
+    void characterCanHealCharacters(){
+        //given
+        var pc=new Character();
+        var ally=new Character();
+        ally.damage(500L);
+        //when
+        pc.heal(ally,100L);
+        //then
+        assertEquals(600L,ally.getHealth());
+    }
 }
