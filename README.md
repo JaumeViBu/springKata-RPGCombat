@@ -6,9 +6,9 @@
     -[x] Health, starting at 1000
     -[x] Level, starting at 1
     -[x] May be Alive or Dead, starting Alive (Alive may be a true/false)
--[ ] Characters can Deal Damage to Characters:
+-[x] Characters can Deal Damage to Characters:
     -[x] Damage is subtracted from Health
-    -[ ] When damage received exceeds current Health, Health becomes 0 and the character dies
+    -[x] When damage received exceeds current Health, Health becomes 0 and the character dies
 -[ ] A Character can Heal a Character:
     -[ ] Dead characters cannot be healed
     -[ ] Healing cannot raise health above 1000

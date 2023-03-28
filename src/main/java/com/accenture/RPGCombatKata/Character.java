@@ -24,5 +24,12 @@ public class Character {
 
     public void damage(Long damage){
         this.health-=damage;
+
+        if(this.health<0){
+
+            this.health=0L;
+            this.alive=false;
+        }
+
     }
 }
