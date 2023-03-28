@@ -33,7 +33,7 @@ public class Character {
     }
 
     public void heal(Character target,Long healingValue){
-        target.regen(healingValue);
+        if(target==this)target.regen(healingValue);
     }
 
     public void regen(Long healthToRegen){

@@ -52,12 +52,11 @@ class CharacterTest {
     void characterCanHealCharacters(){
         //given
         var pc=new Character();
-        var ally=new Character();
-        ally.damage(500L);
+        pc.damage(500L);
         //when
-        pc.heal(ally,100L);
+        pc.heal(pc,100L);
         //then
-        assertEquals(600L,ally.getHealth());
+        assertEquals(600L,pc.getHealth());
     }
 
     @Test
@@ -78,12 +77,11 @@ class CharacterTest {
     void characterHealingCannotRaiseHealthAbove1000(){
         //given
         var pc=new Character();
-        var ally=new Character();
-        ally.damage(500L);
+        pc.damage(500L);
         //when
-        pc.heal(ally,100000L);
+        pc.heal(pc,100000L);
         //then
-        assertEquals(1000L,ally.getHealth());
+        assertEquals(1000L,pc.getHealth());
     }
 
     @Test
