@@ -19,7 +19,7 @@ public class Character {
     }
 
     public void dealsDamage(Character target, long damageValue) {
-        target.damage(damageValue);
+        if(this!=target)target.damage(damageValue);
     }
 
     public void damage(Long damage){
