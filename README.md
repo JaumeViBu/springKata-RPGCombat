@@ -17,9 +17,9 @@
 
 - [x] A Character cannot Deal Damage to itself.
 - [x] A Character can only Heal itself.
-- [ ] When dealing damage:
+- [x] When dealing damage:
     - [x] If the target is 5 or more Levels above the attacker, Damage is reduced by 50%
-    - [ ] If the target is 5 or more Levels below the attacker, Damage is increased by 50%
+    - [x] If the target is 5 or more Levels below the attacker, Damage is increased by 50%
 
 ## **Iteration Three**
 

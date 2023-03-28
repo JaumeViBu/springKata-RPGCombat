@@ -126,4 +126,20 @@ class CharacterTest {
         assertEquals(950L,enemy1.getHealth());
         assertEquals(900L,enemy2.getHealth());
     }
+
+    @Test
+    void ifTheTargetIs5OrMoreLevelsBelowTheAttackerDamageIsIncreasedBy50pc(){
+        //given
+        var lvl1=new Character();
+        var lvl100=new Character();
+        lvl100.setLevel(100L);
+        var enemy1=new Character();
+        var enemy2=new Character();
+        //when
+        lvl1.dealsDamage(enemy1,100L);
+        lvl100.dealsDamage(enemy2,100L);
+        //then
+        assertEquals(900L,enemy1.getHealth());
+        assertEquals(850L,enemy2.getHealth());
+    }
 }

@@ -22,8 +22,13 @@ public class Character {
         this.level = level;
     }
 
-    public void dealsDamage(Character target, long damageValue) {
-        if(this!=target)target.damage(target.getLevel()>=this.getLevel()+5?(long)(damageValue*0.5):damageValue);
+    public void dealsDamage(Character target, Long damageValue) {
+        if(this!=target){
+            long realDamageDone=damageValue;
+            if(target.getLevel()>=this.getLevel()+5)realDamageDone*=0.5;
+            if(target.getLevel()<this.getLevel()-5)realDamageDone*=1.5;
+            target.damage(realDamageDone);
+        }
     }
 
     public void damage(Long damage){
