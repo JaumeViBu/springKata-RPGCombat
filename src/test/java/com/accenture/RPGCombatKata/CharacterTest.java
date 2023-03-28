@@ -36,5 +36,15 @@ class CharacterTest {
         assertEquals(950L,enemy.getHealth());
     }
 
-
+    @Test
+    void whenDamageDealtExceedsTargetCurrentHealthBecomes0AndDies(){
+        //given
+        var pc=new Character();
+        var enemy=new Character();
+        //when
+        pc.dealsDamage(enemy,5000L);
+        //then
+        assertEquals(0L,enemy.getHealth());
+        assertEquals(false,enemy.isAlive());
+    }
 }
