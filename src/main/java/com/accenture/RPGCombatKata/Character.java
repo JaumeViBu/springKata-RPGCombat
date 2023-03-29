@@ -19,14 +19,19 @@ public class Character {
     }
 
     public void setLevel(Long level) {
+
         this.level = level;
     }
 
     public void dealsDamage(Character target, Long damageValue) {
+
         if(this!=target){
+
             long realDamageDone=damageValue;
+
             if(target.getLevel()>=this.getLevel()+5)realDamageDone*=0.5;
             if(target.getLevel()<=this.getLevel()-5)realDamageDone*=1.5;
+
             target.damage(realDamageDone);
         }
     }
@@ -46,7 +51,12 @@ public class Character {
     }
 
     public void regen(Long healthToRegen){
+
         if(this.alive)this.health+=healthToRegen;
         if(this.getHealth()>1000L)this.health=1000L;
+    }
+
+    public Integer getMaxRange() {
+        return null;
     }
 }

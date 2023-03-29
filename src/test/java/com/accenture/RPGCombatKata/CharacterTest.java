@@ -132,14 +132,29 @@ class CharacterTest {
         //given
         var lvl1=new Character();
         var lvl6=new Character();
+        var lvl10=new Character();
         lvl6.setLevel(6L);
+        lvl10.setLevel(10L);
         var enemy1=new Character();
         var enemy2=new Character();
+        var enemy3=new Character();
         //when
         lvl1.dealsDamage(enemy1,100L);
         lvl6.dealsDamage(enemy2,100L);
+        lvl10.dealsDamage(enemy3,100L);
         //then
         assertEquals(900L,enemy1.getHealth());
         assertEquals(850L,enemy2.getHealth());
+        assertEquals(850L,enemy3.getHealth());
+    }
+
+    @Test
+    void charactersMustHaveMaxRange(){
+        //given
+        var pc=new Character();
+        //when
+        var sut =pc.getMaxRange();
+        //then
+        assertEquals(2,sut);
     }
 }
