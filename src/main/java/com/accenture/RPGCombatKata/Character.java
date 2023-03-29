@@ -57,6 +57,6 @@ public class Character {
     }
 
     public Integer getMaxRange() {
-        return null;
+        return 2;
     }
 }
