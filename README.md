@@ -28,13 +28,19 @@
 - [x] Characters have an attack Max Range.
 - [x] *Melee* fighters have a range of 2 meters.
 - [x] *Ranged* fighters have a range of 20 meters.
-- [ ] Characters must be in range to deal damage to a target.
+- [x] Characters must be in range to deal damage to a target.
 
 ## **Retrospective**
 
 - Are you keeping up with the requirements? Has any iteration been a big challenge?
+  - *Yes, a bit hectic but it's a nice change of pace.* 
+  - *The biggest challenge for me was in the third iteration. It took a little while to see how exactly build the tests.*
 - Do you feel good about your design? Is it scalable and easily adapted to new requirements?
+  - Yes, I'm pretty proud of how much my code has changed in the last monts.
+  - It's been pretty forgiven till now.
 - Is everything tested? Are you confident in your code?
+  - Of course. 
+  - 100% confident.
 
 ## **Iteration Four**
 

@@ -25,6 +25,15 @@ public class Character {
         this.level = level;
     }
 
+    /**
+     * Character deals damageValue to a given target
+     * if target is itself, do nothing
+     * if target is not in range, do nothing
+     * if target is 5 or more lvls above this character, the damage is reduced by 50%
+     * if target is 5 or more lvls below this character, the damage is increased by 50%
+     * @param target
+     * @param damageValue
+     */
     public void dealsDamage(Character target, Long damageValue) {
 
         Boolean isTargetingItself=this==target;
@@ -44,26 +53,49 @@ public class Character {
         target.damage(realDamageDone);
     }
 
+    /**
+     * Applies a damage amount to the character health
+     * @param damage
+     */
     public void damage(Long damage){
+
         this.health-=damage;
 
-        if(this.health<0){
+        if(this.health>0)return;
 
-            this.health=0L;
-            this.alive=false;
-        }
+        this.health=0L;
+        this.alive=false;
     }
 
+    /**
+     * Character activates health regen by healthToRegen amount, to a given target health
+     * if target is not itself, do nothing
+     * @param target
+     * @param healingValue
+     */
     public void heal(Character target,Long healingValue){
-        if(target==this)target.regen(healingValue);
+        Boolean targetIsItself=target==this;
+        if(targetIsItself)target.regen(healingValue);
     }
 
+    /**
+     * Character regens a healthToRegen amount of life
+     * if characer is not alive, do nothing
+     * character cannot regen over 1000L
+     * @param healthToRegen
+     */
     public void regen(Long healthToRegen){
 
         if(this.alive)this.health+=healthToRegen;
         if(this.getHealth()>1000L)this.health=1000L;
     }
 
+    /**
+     * get characters max range based on the character range type,
+     * 2m for RANGETYPES.MELEE
+     * 20m for RANGETYPES.RANGED
+     * @return
+     */
     public Integer getMaxRange() {
         switch (this.rangetype){
             case MELEE:
