@@ -168,4 +168,15 @@ class CharacterTest {
         //then
         assertEquals(2,sut);
     }
+
+    @Test
+    void rangeCharactersMustHave20mMaxRange(){
+        //given
+        var ranged=new Character();
+        ranged.setRangeType(RANGETYPES.RANGED);
+        //when
+        var sut =ranged.getMaxRange();
+        //then
+        assertEquals(20,sut);
+    }
 }
