@@ -157,4 +157,15 @@ class CharacterTest {
         //then
         assertEquals(2,sut);
     }
+
+    @Test
+    void meleeCharactersMustHave2mMaxRange(){
+        //given
+        var melee=new Character();
+        melee.setRangeType(RANGETYPES.melee);
+        //when
+        var sut =melee.getMaxRange();
+        //then
+        assertEquals(2,sut);
+    }
 }
