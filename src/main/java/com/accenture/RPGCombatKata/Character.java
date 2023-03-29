@@ -71,4 +71,7 @@ public class Character {
     public void setRangeType(RANGETYPES rangeType) {
         this.rangetype=rangeType;
     }
+
+    public void setPosition(int i) {
+    }
 }

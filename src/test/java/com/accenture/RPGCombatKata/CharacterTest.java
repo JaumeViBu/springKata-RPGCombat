@@ -179,4 +179,35 @@ class CharacterTest {
         //then
         assertEquals(20,sut);
     }
+
+    @Test
+    void charactersMustBeInRangeToDealDamageToTarget(){
+        //given
+        var melee=new Character();
+        var ranged=new Character();
+
+        melee.setRangeType(RANGETYPES.MELEE);
+        ranged.setRangeType(RANGETYPES.RANGED);
+
+        var enemy2m=new Character();
+        var enemy20m=new Character();
+
+        enemy2m.setPosition(2);
+        enemy20m.setPosition(20);
+
+        //when
+        melee.dealsDamage(enemy2m,100L);
+        melee.dealsDamage(enemy20m,100L);
+        ranged.dealsDamage(enemy2m,100L);
+        ranged.dealsDamage(enemy20m,100L);
+
+        var sut2m =enemy2m.getHealth();
+        var sut20m =enemy20m.getHealth();
+
+        //then
+        assertEquals(800L,sut2m);
+        assertEquals(900L,sut20m);
+    }
+
+
 }
