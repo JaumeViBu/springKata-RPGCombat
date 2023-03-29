@@ -6,6 +6,7 @@ public class Character {
     private Long level=1L;
     private Boolean alive=true;
     private RANGETYPES rangetype=RANGETYPES.MELEE;
+    private Double position=0D;
 
     public Long getHealth() {
         return this.health;
@@ -26,15 +27,21 @@ public class Character {
 
     public void dealsDamage(Character target, Long damageValue) {
 
-        if(this!=target){
+        Boolean isTargetingItself=this==target;
+        if(isTargetingItself)return;
 
-            long realDamageDone=damageValue;
+        Boolean targetIsNotInRange=Math.abs(target.position-this.position)>this.getMaxRange();
+        if(targetIsNotInRange)return;
 
-            if(target.getLevel()>=this.getLevel()+5)realDamageDone*=0.5;
-            if(target.getLevel()<=this.getLevel()-5)realDamageDone*=1.5;
+        long realDamageDone=damageValue;
 
-            target.damage(realDamageDone);
-        }
+        Boolean targetIs5lvlStronger=target.getLevel()>=this.getLevel()+5;
+        if(targetIs5lvlStronger)realDamageDone*=0.5;
+
+        Boolean targetIs5lvlWeaker=target.getLevel()<=this.getLevel()-5;
+        if(targetIs5lvlWeaker)realDamageDone*=1.5;
+
+        target.damage(realDamageDone);
     }
 
     public void damage(Long damage){
@@ -72,6 +79,7 @@ public class Character {
         this.rangetype=rangeType;
     }
 
-    public void setPosition(int i) {
+    public void setPosition(Double position) {
+        this.position=position;
     }
 }

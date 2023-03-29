@@ -192,8 +192,8 @@ class CharacterTest {
         var enemy2m=new Character();
         var enemy20m=new Character();
 
-        enemy2m.setPosition(2);
-        enemy20m.setPosition(20);
+        enemy2m.setPosition(2D);
+        enemy20m.setPosition(20D);
 
         //when
         melee.dealsDamage(enemy2m,100L);
