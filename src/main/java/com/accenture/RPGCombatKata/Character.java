@@ -26,7 +26,7 @@ public class Character {
         if(this!=target){
             long realDamageDone=damageValue;
             if(target.getLevel()>=this.getLevel()+5)realDamageDone*=0.5;
-            if(target.getLevel()<this.getLevel()-5)realDamageDone*=1.5;
+            if(target.getLevel()<=this.getLevel()-5)realDamageDone*=1.5;
             target.damage(realDamageDone);
         }
     }

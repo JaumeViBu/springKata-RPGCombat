@@ -117,8 +117,8 @@ class CharacterTest {
         lvl10.setLevel(10L);
         var enemy1=new Character();
         var enemy2=new Character();
-        enemy1.setLevel(7L);
-        enemy2.setLevel(7L);
+        enemy1.setLevel(6L);
+        enemy2.setLevel(6L);
         //when
         lvl1.dealsDamage(enemy1,100L);
         lvl10.dealsDamage(enemy2,100L);
@@ -131,13 +131,13 @@ class CharacterTest {
     void ifTheTargetIs5OrMoreLevelsBelowTheAttackerDamageIsIncreasedBy50pc(){
         //given
         var lvl1=new Character();
-        var lvl100=new Character();
-        lvl100.setLevel(100L);
+        var lvl6=new Character();
+        lvl6.setLevel(6L);
         var enemy1=new Character();
         var enemy2=new Character();
         //when
         lvl1.dealsDamage(enemy1,100L);
-        lvl100.dealsDamage(enemy2,100L);
+        lvl6.dealsDamage(enemy2,100L);
         //then
         assertEquals(900L,enemy1.getHealth());
         assertEquals(850L,enemy2.getHealth());
