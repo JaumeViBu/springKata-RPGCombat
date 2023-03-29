@@ -162,7 +162,7 @@ class CharacterTest {
     void meleeCharactersMustHave2mMaxRange(){
         //given
         var melee=new Character();
-        melee.setRangeType(RANGETYPES.melee);
+        melee.setRangeType(RANGETYPES.MELEE);
         //when
         var sut =melee.getMaxRange();
         //then

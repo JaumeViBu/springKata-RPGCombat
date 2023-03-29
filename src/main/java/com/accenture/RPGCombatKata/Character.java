@@ -5,6 +5,7 @@ public class Character {
     private Long health=1000L;
     private Long level=1L;
     private Boolean alive=true;
+    private RANGETYPES rangetype=RANGETYPES.MELEE;
 
     public Long getHealth() {
         return this.health;
@@ -58,5 +59,9 @@ public class Character {
 
     public Integer getMaxRange() {
         return 2;
+    }
+
+    public void setRangeType(RANGETYPES rangeType) {
+        this.rangetype=rangeType;
     }
 }

@@ -26,7 +26,7 @@
 ## **Iteration Three**
 
 - [x] Characters have an attack Max Range.
-- [ ] *Melee* fighters have a range of 2 meters.
+- [x] *Melee* fighters have a range of 2 meters.
 - [ ] *Ranged* fighters have a range of 20 meters.
 - [ ] Characters must be in range to deal damage to a target.
 
