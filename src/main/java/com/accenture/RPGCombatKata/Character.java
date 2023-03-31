@@ -149,5 +149,12 @@ public class Character {
 
 
     public Boolean isAlly(Character other) {
+
+        Set<FACTIONS> aux = new HashSet<>(other.factions);
+        aux.retainAll(this.factions);
+
+        Boolean containsAtLeast1MatchFaction=aux.size()>0;
+
+        return containsAtLeast1MatchFaction;
     }
 }
