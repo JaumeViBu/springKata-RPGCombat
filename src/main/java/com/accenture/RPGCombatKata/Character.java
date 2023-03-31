@@ -1,5 +1,7 @@
 package com.accenture.RPGCombatKata;
 
+import java.util.ArrayList;
+
 public class Character {
 
     private Long health=1000L;
@@ -7,6 +9,7 @@ public class Character {
     private Boolean alive=true;
     private RANGETYPES rangetype=RANGETYPES.MELEE;
     private Double position=0D;
+    private ArrayList<FACTIONS> factions=new ArrayList<>();
 
     public Character() {
         this(1L,RANGETYPES.MELEE,0D);
@@ -124,5 +127,11 @@ public class Character {
 
     public void setPosition(Double position) {
         this.position=position;
+    }
+
+    public FACTIONS[] getFactions() {
+        FACTIONS[] res=new FACTIONS[this.factions.size()];
+        this.factions.toArray(res);
+        return res;
     }
 }
