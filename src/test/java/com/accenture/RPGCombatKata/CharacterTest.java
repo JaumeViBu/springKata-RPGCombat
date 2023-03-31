@@ -204,8 +204,21 @@ class CharacterTest {
         var factions=pc.getFactions();
         //then
         assertEquals(0,factions.length);
-
     }
+
+    @Test
+    void charactersMayBelongToOneOrMoreFactions(){
+        //given
+        var pc=new Character();
+        pc.addFaction(FACTIONS.LIGHT_BEARERS);
+        pc.addFaction(FACTIONS.DARK_RISERS);
+        //when
+        var factions=pc.getFactions();
+        //then
+        assertEquals(2,factions.length);
+    }
+
+
 
 
 }
