@@ -243,12 +243,19 @@ class CharacterTest {
         lightBearer1.addFaction(FACTIONS.LIGHT_BEARERS);
         var lightBearer2=new Character();
         lightBearer2.addFaction(FACTIONS.LIGHT_BEARERS);
+        var all1=new Character();
+        all1.addFaction(FACTIONS.LIGHT_BEARERS);
+        all1.addFaction(FACTIONS.DARK_RISERS);
         //when
         var allies1=darkRiser1.isAlly(lightBearer1);
         var allies2=lightBearer1.isAlly(lightBearer2);
+        var allies3=all1.isAlly(darkRiser1);
+        var allies4=all1.isAlly(lightBearer1);
         //then
         assertEquals(false,allies1);
         assertEquals(true,allies2);
+        assertEquals(true,allies3);
+        assertEquals(true,allies4);
     }
 
 

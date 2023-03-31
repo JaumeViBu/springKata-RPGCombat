@@ -148,4 +148,6 @@ public class Character {
     }
 
 
+    public Boolean isAlly(Character other) {
+    }
 }
