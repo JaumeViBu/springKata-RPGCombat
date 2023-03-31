@@ -282,7 +282,42 @@ class CharacterTest {
         assertEquals(1000L,darkRiser2Health);
         assertEquals(900L,lightBearer1Health);
         assertEquals(1000L,all1Health);
-
     }
+
+    @Test
+    void alliesCanHealOneAnother(){
+        //given
+        var darkRiser1=new Character();
+        darkRiser1.addFaction(FACTIONS.DARK_RISERS);
+        var darkRiser2=new Character();
+        darkRiser2.addFaction(FACTIONS.DARK_RISERS);
+        var lightBearer1=new Character();
+        lightBearer1.addFaction(FACTIONS.LIGHT_BEARERS);
+        var all1=new Character();
+        all1.addFaction(FACTIONS.LIGHT_BEARERS);
+        all1.addFaction(FACTIONS.DARK_RISERS);
+
+        darkRiser1.damage(500L);
+        darkRiser2.damage(500L);
+        lightBearer1.damage(500L);
+        all1.damage(500L);
+
+        //when
+        darkRiser1.heal(darkRiser1,100L);
+        darkRiser1.heal(darkRiser2,100L);
+        darkRiser1.heal(lightBearer1,100L);
+        darkRiser1.heal(all1,100L);
+
+        var darkRiser1Health=darkRiser1.getHealth();
+        var darkRiser2Health=darkRiser2.getHealth();
+        var lightBearer1Health=lightBearer1.getHealth();
+        var all1Health=all1.getHealth();
+        //then
+        assertEquals(600L,darkRiser1Health);
+        assertEquals(600L,darkRiser2Health);
+        assertEquals(500L,lightBearer1Health);
+        assertEquals(600L,all1Health);
+    }
+
 
 }
