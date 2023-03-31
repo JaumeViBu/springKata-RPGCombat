@@ -97,14 +97,7 @@ public class Character {
      * @return
      */
     public Integer getMaxRange() {
-        switch (this.rangetype){
-            case MELEE:
-                return 2;
-            case RANGED:
-                return 20;
-            default:
-                return null;
-        }
+        return this.rangetype.range;
     }
 
     public void setRangeType(RANGETYPES rangeType) {
