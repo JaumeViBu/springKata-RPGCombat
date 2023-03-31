@@ -1,7 +1,5 @@
 package com.accenture.RPGCombatKata;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,23 +8,23 @@ public class Character {
     private Long health=1000L;
     private Long level=1L;
     private Boolean alive=true;
-    private RANGETYPES rangetype=RANGETYPES.MELEE;
+    private RangeTypes rangetype= RangeTypes.MELEE;
     private Double position=0D;
     private Set<FACTIONS> factions=new HashSet<>();
 
     public Character() {
-        this(1L,RANGETYPES.MELEE,0D);
+        this(1L, RangeTypes.MELEE,0D);
     }
 
     public Character(Long level){
-        this(level,RANGETYPES.MELEE,0D);
+        this(level, RangeTypes.MELEE,0D);
     }
 
-    public Character(RANGETYPES rangetype){
+    public Character(RangeTypes rangetype){
         this(1L,rangetype,0D);
     }
 
-    public Character(Long level, RANGETYPES rangetype, Double position) {
+    public Character(Long level, RangeTypes rangetype, Double position) {
         this.level = level;
         this.rangetype = rangetype;
         this.position = position;
@@ -128,7 +126,7 @@ public class Character {
         return this.rangetype.range;
     }
 
-    public void setRangeType(RANGETYPES rangeType) {
+    public void setRangeType(RangeTypes rangeType) {
         this.rangetype=rangeType;
     }
 

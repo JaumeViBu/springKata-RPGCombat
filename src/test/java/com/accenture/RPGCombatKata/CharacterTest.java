@@ -156,7 +156,7 @@ class CharacterTest {
     @Test
     void meleeCharactersMustHave2mMaxRange(){
         //given
-        var melee=new Character(RANGETYPES.MELEE);
+        var melee=new Character(RangeTypes.MELEE);
         //when
         var sut =melee.getMaxRange();
         //then
@@ -166,7 +166,7 @@ class CharacterTest {
     @Test
     void rangeCharactersMustHave20mMaxRange(){
         //given
-        var ranged=new Character(RANGETYPES.RANGED);
+        var ranged=new Character(RangeTypes.RANGED);
         //when
         var sut =ranged.getMaxRange();
         //then
@@ -176,11 +176,11 @@ class CharacterTest {
     @Test
     void charactersMustBeInRangeToDealDamageToTarget(){
         //given
-        var melee=new Character(RANGETYPES.MELEE);
-        var ranged=new Character(RANGETYPES.RANGED);
+        var melee=new Character(RangeTypes.MELEE);
+        var ranged=new Character(RangeTypes.RANGED);
 
-        var enemy2m=new Character(1L,RANGETYPES.MELEE,2D);
-        var enemy20m=new Character(1L,RANGETYPES.MELEE,20D);
+        var enemy2m=new Character(1L, RangeTypes.MELEE,2D);
+        var enemy20m=new Character(1L, RangeTypes.MELEE,20D);
 
         //when
         melee.dealsDamage(enemy2m,100L);
@@ -317,6 +317,28 @@ class CharacterTest {
         assertEquals(600L,darkRiser2Health);
         assertEquals(500L,lightBearer1Health);
         assertEquals(600L,all1Health);
+    }
+
+    @Test
+    void anythingThatHasHealthMayBeATarget() {
+        //given
+        var pc=new Character();
+        var enemy=new Character();
+        var woodenDoor=new Prop("wooden door",200L);
+        var woodenCrate=new Prop("wooden crate",50L);
+        //when
+        pc.dealsDamage(enemy,100L);
+        pc.dealsDamage(woodenDoor,100L);
+        pc.dealsDamage(woodenCrate,100L);
+
+        var enemyHealth=enemy.getHealth();
+        var woodenDoorHealth=woodenDoor.getHealth();
+        var woodenCrateHealth=woodenCrate.getHealth();
+        //then
+        assertEquals(900L,enemyHealth);
+        assertEquals(100L,woodenDoorHealth);
+        assertEquals(0L,woodenCrateHealth);
+
     }
 
 
