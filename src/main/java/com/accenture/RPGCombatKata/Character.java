@@ -63,6 +63,9 @@ public class Character {
         Boolean isTargetingItself=this==target;
         if(isTargetingItself)return;
 
+        Boolean isTargetingAnAlly=this.isAlly(target);
+        if(isTargetingAnAlly)return;
+
         Boolean targetIsNotInRange=Math.abs(target.position-this.position)>this.getMaxRange();
         if(targetIsNotInRange)return;
 
