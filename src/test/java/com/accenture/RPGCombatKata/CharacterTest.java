@@ -234,7 +234,22 @@ class CharacterTest {
         assertEquals(1,factions.length);
     }
 
-
+    @Test
+    void playersBelongingToTheSameFactionAreConsideredAllies(){
+        //given
+        var darkRiser1=new Character();
+        darkRiser1.addFaction(FACTIONS.DARK_RISERS);
+        var lightBearer1=new Character();
+        lightBearer1.addFaction(FACTIONS.LIGHT_BEARERS);
+        var lightBearer2=new Character();
+        lightBearer2.addFaction(FACTIONS.LIGHT_BEARERS);
+        //when
+        var allies1=darkRiser1.isAlly(lightBearer1);
+        var allies2=lightBearer1.isAlly(lightBearer2);
+        //then
+        assertEquals(false,allies1);
+        assertEquals(true,allies2);
+    }
 
 
 }

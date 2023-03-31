@@ -146,4 +146,6 @@ public class Character {
     public void removeFaction(FACTIONS faction) {
         this.factions.remove(faction);
     }
+
+
 }
