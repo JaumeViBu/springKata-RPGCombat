@@ -8,6 +8,24 @@ public class Character {
     private RANGETYPES rangetype=RANGETYPES.MELEE;
     private Double position=0D;
 
+    public Character() {
+        this(1L,RANGETYPES.MELEE,0D);
+    }
+
+    public Character(Long level){
+        this(level,RANGETYPES.MELEE,0D);
+    }
+
+    public Character(RANGETYPES rangetype){
+        this(1L,rangetype,0D);
+    }
+
+    public Character(Long level, RANGETYPES rangetype, Double position) {
+        this.level = level;
+        this.rangetype = rangetype;
+        this.position = position;
+    }
+
     public Long getHealth() {
         return this.health;
     }

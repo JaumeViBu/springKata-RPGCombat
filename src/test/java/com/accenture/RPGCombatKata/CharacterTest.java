@@ -113,12 +113,9 @@ class CharacterTest {
     void ifTheTargetIs5OrMoreLevelsAboveTheAttackerDamageIsReducedBy50pc(){
         //given
         var lvl1=new Character();
-        var lvl10=new Character();
-        lvl10.setLevel(10L);
-        var enemy1=new Character();
-        var enemy2=new Character();
-        enemy1.setLevel(6L);
-        enemy2.setLevel(6L);
+        var lvl10=new Character(10L);
+        var enemy1=new Character(6L);
+        var enemy2=new Character(6L);
         //when
         lvl1.dealsDamage(enemy1,100L);
         lvl10.dealsDamage(enemy2,100L);
@@ -131,10 +128,8 @@ class CharacterTest {
     void ifTheTargetIs5OrMoreLevelsBelowTheAttackerDamageIsIncreasedBy50pc(){
         //given
         var lvl1=new Character();
-        var lvl6=new Character();
-        var lvl10=new Character();
-        lvl6.setLevel(6L);
-        lvl10.setLevel(10L);
+        var lvl6=new Character(6L);
+        var lvl10=new Character(6L);
         var enemy1=new Character();
         var enemy2=new Character();
         var enemy3=new Character();
@@ -161,8 +156,7 @@ class CharacterTest {
     @Test
     void meleeCharactersMustHave2mMaxRange(){
         //given
-        var melee=new Character();
-        melee.setRangeType(RANGETYPES.MELEE);
+        var melee=new Character(RANGETYPES.MELEE);
         //when
         var sut =melee.getMaxRange();
         //then
@@ -172,8 +166,7 @@ class CharacterTest {
     @Test
     void rangeCharactersMustHave20mMaxRange(){
         //given
-        var ranged=new Character();
-        ranged.setRangeType(RANGETYPES.RANGED);
+        var ranged=new Character(RANGETYPES.RANGED);
         //when
         var sut =ranged.getMaxRange();
         //then
@@ -183,17 +176,11 @@ class CharacterTest {
     @Test
     void charactersMustBeInRangeToDealDamageToTarget(){
         //given
-        var melee=new Character();
-        var ranged=new Character();
+        var melee=new Character(RANGETYPES.MELEE);
+        var ranged=new Character(RANGETYPES.RANGED);
 
-        melee.setRangeType(RANGETYPES.MELEE);
-        ranged.setRangeType(RANGETYPES.RANGED);
-
-        var enemy2m=new Character();
-        var enemy20m=new Character();
-
-        enemy2m.setPosition(2D);
-        enemy20m.setPosition(20D);
+        var enemy2m=new Character(1L,RANGETYPES.MELEE,2D);
+        var enemy20m=new Character(1L,RANGETYPES.MELEE,20D);
 
         //when
         melee.dealsDamage(enemy2m,100L);
@@ -207,6 +194,17 @@ class CharacterTest {
         //then
         assertEquals(800L,sut2m);
         assertEquals(900L,sut20m);
+    }
+
+    @Test
+    void newlyCreatedCharactersBelongToNoFaction(){
+        //given
+        var pc=new Character();
+        //when
+        var factions=pc.getFactions();
+        //then
+        assertEquals(0,factions.length);
+
     }
 
 
