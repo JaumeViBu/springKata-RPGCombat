@@ -211,6 +211,8 @@ class CharacterTest {
         //given
         var pc=new Character();
         pc.addFaction(FACTIONS.LIGHT_BEARERS);
+        pc.addFaction(FACTIONS.LIGHT_BEARERS);
+        pc.addFaction(FACTIONS.LIGHT_BEARERS);
         pc.addFaction(FACTIONS.DARK_RISERS);
         //when
         var factions=pc.getFactions();

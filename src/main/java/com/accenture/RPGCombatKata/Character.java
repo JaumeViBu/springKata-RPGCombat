@@ -1,6 +1,9 @@
 package com.accenture.RPGCombatKata;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Character {
 
@@ -9,7 +12,7 @@ public class Character {
     private Boolean alive=true;
     private RANGETYPES rangetype=RANGETYPES.MELEE;
     private Double position=0D;
-    private ArrayList<FACTIONS> factions=new ArrayList<>();
+    private Set<FACTIONS> factions=new HashSet<>();
 
     public Character() {
         this(1L,RANGETYPES.MELEE,0D);
@@ -133,5 +136,9 @@ public class Character {
         FACTIONS[] res=new FACTIONS[this.factions.size()];
         this.factions.toArray(res);
         return res;
+    }
+
+    public void addFaction(FACTIONS faction) {
+        this.factions.add(faction);
     }
 }
