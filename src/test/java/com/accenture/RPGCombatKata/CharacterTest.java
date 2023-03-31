@@ -210,14 +210,28 @@ class CharacterTest {
     void charactersMayBelongToOneOrMoreFactions(){
         //given
         var pc=new Character();
+        //when
         pc.addFaction(FACTIONS.LIGHT_BEARERS);
         pc.addFaction(FACTIONS.LIGHT_BEARERS);
         pc.addFaction(FACTIONS.LIGHT_BEARERS);
         pc.addFaction(FACTIONS.DARK_RISERS);
-        //when
         var factions=pc.getFactions();
         //then
         assertEquals(2,factions.length);
+    }
+
+    @Test
+    void aCharacterMayJoinOrLeaveOneOrMoreFactions(){
+        //given
+        var pc=new Character();
+        //when
+        pc.addFaction(FACTIONS.LIGHT_BEARERS);
+        pc.addFaction(FACTIONS.DARK_RISERS);
+        pc.removeFaction(FACTIONS.LIGHT_BEARERS);
+        pc.removeFaction(FACTIONS.LIGHT_BEARERS);
+        var factions=pc.getFactions();
+        //then
+        assertEquals(1,factions.length);
     }
 
 

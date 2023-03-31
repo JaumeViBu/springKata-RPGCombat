@@ -141,4 +141,6 @@ public class Character {
     public void addFaction(FACTIONS faction) {
         this.factions.add(faction);
     }
+
+
 }
