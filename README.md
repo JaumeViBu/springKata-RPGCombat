@@ -46,7 +46,7 @@
 
 - [x] Characters may belong to one or more Factions.
     - [x] Newly created Characters belong to no Faction.
-- [ ] A Character may Join or Leave one or more Factions.
+- [x] A Character may Join or Leave one or more Factions.
 - [ ] Players belonging to the same Faction are considered Allies.
 - [ ] Allies cannot Deal Damage to one another.
 - [ ] Allies can Heal one another.
