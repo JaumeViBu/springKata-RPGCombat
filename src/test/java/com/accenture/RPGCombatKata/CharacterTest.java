@@ -342,4 +342,20 @@ class CharacterTest {
     }
 
 
+    @Test
+    void theseThingsCanNotBeHealedAndTheyDoNotDealDamage() {
+        //given
+        var door=new Prop("door",200L);
+        door.damage(100L);
+        var pc=new Character();
+        //when
+        pc.heal(door);
+        var doorHealth=door.getHealth();
+        //then
+        assertEquals(100L,doorHealth);
+
+
+    }
+
+
 }
