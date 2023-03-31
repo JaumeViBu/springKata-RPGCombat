@@ -102,7 +102,8 @@ public class Character {
      */
     public void heal(Character target,Long healingValue){
         Boolean targetIsItself=target==this;
-        if(targetIsItself)target.regen(healingValue);
+        Boolean targetIsAlly=this.isAlly(target);
+        if(targetIsItself || targetIsAlly)target.regen(healingValue);
     }
 
     /**

@@ -49,7 +49,7 @@
 - [x] A Character may Join or Leave one or more Factions.
 - [x] Players belonging to the same Faction are considered Allies.
 - [x] Allies cannot Deal Damage to one another.
-- [ ] Allies can Heal one another.
+- [x] Allies can Heal one another.
 
 ## **Iteration Five**
 
