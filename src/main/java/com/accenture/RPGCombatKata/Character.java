@@ -3,7 +3,7 @@ package com.accenture.RPGCombatKata;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Character {
+public class Character implements IDamageable{
 
     private Long health=1000L;
     private Long level=1L;
@@ -56,24 +56,29 @@ public class Character {
      * @param target
      * @param damageValue
      */
-    public void dealsDamage(Character target, Long damageValue) {
+    public void dealsDamage(IDamageable target, Long damageValue) {
 
         Boolean isTargetingItself=this==target;
         if(isTargetingItself)return;
 
-        Boolean isTargetingAnAlly=this.isAlly(target);
+        Boolean isTargetingAnAlly=this.isAlly((Character) target);
         if(isTargetingAnAlly)return;
 
-        Boolean targetIsNotInRange=Math.abs(target.position-this.position)>this.getMaxRange();
+        Boolean targetIsNotInRange=Math.abs(target.getPosition()-this.getPosition())>this.getMaxRange();
         if(targetIsNotInRange)return;
+
 
         long realDamageDone=damageValue;
 
-        Boolean targetIs5lvlStronger=target.getLevel()>=this.getLevel()+5;
-        if(targetIs5lvlStronger)realDamageDone*=0.5;
+        if(target instanceof Character){
 
-        Boolean targetIs5lvlWeaker=target.getLevel()<=this.getLevel()-5;
-        if(targetIs5lvlWeaker)realDamageDone*=1.5;
+            Character characterTarget=(Character) target;
+            Boolean targetIs5lvlStronger=characterTarget.getLevel()>=this.getLevel()+5;
+            if(targetIs5lvlStronger)realDamageDone*=0.5;
+
+            Boolean targetIs5lvlWeaker=characterTarget.getLevel()<=this.getLevel()-5;
+            if(targetIs5lvlWeaker)realDamageDone*=1.5;
+        }
 
         target.damage(realDamageDone);
     }
@@ -90,6 +95,11 @@ public class Character {
 
         this.health=0L;
         this.alive=false;
+    }
+
+    @Override
+    public Double getPosition() {
+        return this.position;
     }
 
     /**
