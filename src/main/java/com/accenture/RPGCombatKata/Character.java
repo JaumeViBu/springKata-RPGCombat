@@ -61,9 +61,6 @@ public class Character implements IDamageable{
         Boolean isTargetingItself=this==target;
         if(isTargetingItself)return;
 
-        Boolean isTargetingAnAlly=this.isAlly((Character) target);
-        if(isTargetingAnAlly)return;
-
         Boolean targetIsNotInRange=Math.abs(target.getPosition()-this.getPosition())>this.getMaxRange();
         if(targetIsNotInRange)return;
 
@@ -71,6 +68,9 @@ public class Character implements IDamageable{
         long realDamageDone=damageValue;
 
         if(target instanceof Character){
+
+            Boolean isTargetingAnAlly=this.isAlly((Character) target);
+            if(isTargetingAnAlly)return;
 
             Character characterTarget=(Character) target;
             Boolean targetIs5lvlStronger=characterTarget.getLevel()>=this.getLevel()+5;
@@ -108,10 +108,13 @@ public class Character implements IDamageable{
      * @param target
      * @param healingValue
      */
-    public void heal(Character target,Long healingValue){
+    public void heal(IDamageable target,Long healingValue){
         Boolean targetIsItself=target==this;
-        Boolean targetIsAlly=this.isAlly(target);
-        if(targetIsItself || targetIsAlly)target.regen(healingValue);
+        Boolean targetIsNotACharacter=!(target instanceof Character);
+        if(targetIsNotACharacter)return;
+        Character targetCharacter=(Character) target;
+        Boolean targetIsAlly=this.isAlly(targetCharacter);
+        if(targetIsItself || targetIsAlly)targetCharacter.regen(healingValue);
     }
 
     /**

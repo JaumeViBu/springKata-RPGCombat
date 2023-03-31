@@ -36,6 +36,6 @@ public class Prop implements IDamageable {
 
     @Override
     public Double getPosition() {
-        return null;
+        return this.position;
     }
 }

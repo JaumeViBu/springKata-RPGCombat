@@ -349,7 +349,7 @@ class CharacterTest {
         door.damage(100L);
         var pc=new Character();
         //when
-        pc.heal(door);
+        pc.heal(door,100L);
         var doorHealth=door.getHealth();
         //then
         assertEquals(100L,doorHealth);
