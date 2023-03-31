@@ -258,5 +258,31 @@ class CharacterTest {
         assertEquals(true,allies4);
     }
 
+    @Test
+    void alliesCannotDealDamageToOneAnother(){
+        //given
+        var darkRiser1=new Character();
+        darkRiser1.addFaction(FACTIONS.DARK_RISERS);
+        var darkRiser2=new Character();
+        darkRiser2.addFaction(FACTIONS.DARK_RISERS);
+        var lightBearer1=new Character();
+        lightBearer1.addFaction(FACTIONS.LIGHT_BEARERS);
+        var all1=new Character();
+        all1.addFaction(FACTIONS.LIGHT_BEARERS);
+        all1.addFaction(FACTIONS.DARK_RISERS);
+        //when
+        darkRiser1.dealsDamage(lightBearer1,100L);
+        darkRiser1.dealsDamage(darkRiser2,100L);
+        darkRiser1.dealsDamage(all1,100L);
+
+        var darkRiser2Health=darkRiser2.getHealth();
+        var lightBearer1Health=lightBearer1.getHealth();
+        var all1Health=all1.getHealth();
+        //then
+        assertEquals(1000L,darkRiser2Health);
+        assertEquals(900L,lightBearer1Health);
+        assertEquals(1000L,all1Health);
+
+    }
 
 }
