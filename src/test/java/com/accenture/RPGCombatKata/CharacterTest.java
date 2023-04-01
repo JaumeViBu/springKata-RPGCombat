@@ -392,7 +392,7 @@ class CharacterTest {
         long dummyHealth= dummy.getHealth();
         //then
         assertEquals(0L,dummyHealth);
-        assertEquals(true,isDummyDestroyed);
+        assertTrue(isDummyDestroyed);
     }
 
 

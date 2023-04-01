@@ -45,6 +45,6 @@ public class Prop implements IDamageable {
     }
 
     public Boolean isDestroyed() {
-        return false;
+        return this.health==0L;
     }
 }
