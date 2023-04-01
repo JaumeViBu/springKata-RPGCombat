@@ -395,5 +395,20 @@ class CharacterTest {
         assertTrue(isDummyDestroyed);
     }
 
+    @Test
+    void characterCanDestroy2000HpTree(){
+        //given
+        Character lumberjack=new Character();
+        Prop yggdrasil=new Prop("Yggdrasil",2000L);
+        //when
+        int hits=0;
+        while(!yggdrasil.isDestroyed()) {
+            lumberjack.dealsDamage(yggdrasil, 50L);
+            hits+=1;
+        }
+        //then
+        assertEquals(40,hits);
+        assertEquals(0L,yggdrasil.getHealth());
+    }
 
 }
