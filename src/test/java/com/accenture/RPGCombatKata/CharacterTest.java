@@ -3,6 +3,8 @@ package com.accenture.RPGCombatKata;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CharacterTest {
@@ -211,10 +213,10 @@ class CharacterTest {
         //given
         var pc=new Character();
         //when
-        pc.addFaction(FACTIONS.LIGHT_BEARERS);
-        pc.addFaction(FACTIONS.LIGHT_BEARERS);
-        pc.addFaction(FACTIONS.LIGHT_BEARERS);
-        pc.addFaction(FACTIONS.DARK_RISERS);
+        pc.addFaction(Factions.LIGHT_BEARERS);
+        pc.addFaction(Factions.LIGHT_BEARERS);
+        pc.addFaction(Factions.LIGHT_BEARERS);
+        pc.addFaction(Factions.DARK_RISERS);
         var factions=pc.getFactions();
         //then
         assertEquals(2,factions.length);
@@ -225,10 +227,10 @@ class CharacterTest {
         //given
         var pc=new Character();
         //when
-        pc.addFaction(FACTIONS.LIGHT_BEARERS);
-        pc.addFaction(FACTIONS.DARK_RISERS);
-        pc.removeFaction(FACTIONS.LIGHT_BEARERS);
-        pc.removeFaction(FACTIONS.LIGHT_BEARERS);
+        pc.addFaction(Factions.LIGHT_BEARERS);
+        pc.addFaction(Factions.DARK_RISERS);
+        pc.removeFaction(Factions.LIGHT_BEARERS);
+        pc.removeFaction(Factions.LIGHT_BEARERS);
         var factions=pc.getFactions();
         //then
         assertEquals(1,factions.length);
@@ -238,14 +240,14 @@ class CharacterTest {
     void playersBelongingToTheSameFactionAreConsideredAllies(){
         //given
         var darkRiser1=new Character();
-        darkRiser1.addFaction(FACTIONS.DARK_RISERS);
+        darkRiser1.addFaction(Factions.DARK_RISERS);
         var lightBearer1=new Character();
-        lightBearer1.addFaction(FACTIONS.LIGHT_BEARERS);
+        lightBearer1.addFaction(Factions.LIGHT_BEARERS);
         var lightBearer2=new Character();
-        lightBearer2.addFaction(FACTIONS.LIGHT_BEARERS);
+        lightBearer2.addFaction(Factions.LIGHT_BEARERS);
         var all1=new Character();
-        all1.addFaction(FACTIONS.LIGHT_BEARERS);
-        all1.addFaction(FACTIONS.DARK_RISERS);
+        all1.addFaction(Factions.LIGHT_BEARERS);
+        all1.addFaction(Factions.DARK_RISERS);
         //when
         var allies1=darkRiser1.isAlly(lightBearer1);
         var allies2=lightBearer1.isAlly(lightBearer2);
@@ -262,14 +264,14 @@ class CharacterTest {
     void alliesCannotDealDamageToOneAnother(){
         //given
         var darkRiser1=new Character();
-        darkRiser1.addFaction(FACTIONS.DARK_RISERS);
+        darkRiser1.addFaction(Factions.DARK_RISERS);
         var darkRiser2=new Character();
-        darkRiser2.addFaction(FACTIONS.DARK_RISERS);
+        darkRiser2.addFaction(Factions.DARK_RISERS);
         var lightBearer1=new Character();
-        lightBearer1.addFaction(FACTIONS.LIGHT_BEARERS);
+        lightBearer1.addFaction(Factions.LIGHT_BEARERS);
         var all1=new Character();
-        all1.addFaction(FACTIONS.LIGHT_BEARERS);
-        all1.addFaction(FACTIONS.DARK_RISERS);
+        all1.addFaction(Factions.LIGHT_BEARERS);
+        all1.addFaction(Factions.DARK_RISERS);
         //when
         darkRiser1.dealsDamage(lightBearer1,100L);
         darkRiser1.dealsDamage(darkRiser2,100L);
@@ -288,14 +290,14 @@ class CharacterTest {
     void alliesCanHealOneAnother(){
         //given
         var darkRiser1=new Character();
-        darkRiser1.addFaction(FACTIONS.DARK_RISERS);
+        darkRiser1.addFaction(Factions.DARK_RISERS);
         var darkRiser2=new Character();
-        darkRiser2.addFaction(FACTIONS.DARK_RISERS);
+        darkRiser2.addFaction(Factions.DARK_RISERS);
         var lightBearer1=new Character();
-        lightBearer1.addFaction(FACTIONS.LIGHT_BEARERS);
+        lightBearer1.addFaction(Factions.LIGHT_BEARERS);
         var all1=new Character();
-        all1.addFaction(FACTIONS.LIGHT_BEARERS);
-        all1.addFaction(FACTIONS.DARK_RISERS);
+        all1.addFaction(Factions.LIGHT_BEARERS);
+        all1.addFaction(Factions.DARK_RISERS);
 
         darkRiser1.damage(500L);
         darkRiser2.damage(500L);
@@ -338,7 +340,6 @@ class CharacterTest {
         assertEquals(900L,enemyHealth);
         assertEquals(100L,woodenDoorHealth);
         assertEquals(0L,woodenCrateHealth);
-
     }
 
 
@@ -353,8 +354,30 @@ class CharacterTest {
         var doorHealth=door.getHealth();
         //then
         assertEquals(100L,doorHealth);
+    }
 
-
+    //These things do not belong to Factions; they are neutral.
+    @Test
+    void theseThingsDoNotBelongToFactionsTheyAreNeutral() {
+        //given
+        ArrayList<Character> factionCharacters=new ArrayList<Character>();
+        for(Factions faction:Factions.values()){
+            Character newFactionCharacter=new Character();
+            newFactionCharacter.addFaction(faction);
+            factionCharacters.add(newFactionCharacter);
+        }
+        //when
+        Long propsFactions=0L;
+        Long remainingHealth=0L;
+        for(Character factionCharacter:factionCharacters){
+            IDamageable dummy=new Prop("dummy",50L);
+            factionCharacter.dealsDamage(dummy,100L);
+            remainingHealth+=dummy.getHealth();
+            propsFactions+=dummy.getFactions().length;
+        }
+        //then
+        assertEquals(0L,remainingHealth);
+        assertEquals(0,propsFactions);
     }
 
 

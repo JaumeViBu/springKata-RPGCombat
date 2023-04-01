@@ -1,6 +1,6 @@
 package com.accenture.RPGCombatKata;
 
-public enum FACTIONS {
+public enum Factions {
     LIGHT_BEARERS,
     DARK_RISERS
 }

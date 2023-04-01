@@ -10,7 +10,7 @@ public class Character implements IDamageable{
     private Boolean alive=true;
     private RangeTypes rangetype= RangeTypes.MELEE;
     private Double position=0D;
-    private Set<FACTIONS> factions=new HashSet<>();
+    private Set<Factions> factions=new HashSet<>();
 
     public Character() {
         this(1L, RangeTypes.MELEE,0D);
@@ -147,25 +147,25 @@ public class Character implements IDamageable{
         this.position=position;
     }
 
-    public FACTIONS[] getFactions() {
-        FACTIONS[] res=new FACTIONS[this.factions.size()];
+    public Factions[] getFactions() {
+        Factions[] res=new Factions[this.factions.size()];
         this.factions.toArray(res);
         return res;
     }
 
-    public void addFaction(FACTIONS faction) {
+    public void addFaction(Factions faction) {
         this.factions.add(faction);
     }
 
 
-    public void removeFaction(FACTIONS faction) {
+    public void removeFaction(Factions faction) {
         this.factions.remove(faction);
     }
 
 
     public Boolean isAlly(Character other) {
 
-        Set<FACTIONS> aux = new HashSet<>(other.factions);
+        Set<Factions> aux = new HashSet<>(other.factions);
         aux.retainAll(this.factions);
 
         Boolean containsAtLeast1MatchFaction=aux.size()>0;
