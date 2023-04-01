@@ -38,4 +38,9 @@ public class Prop implements IDamageable {
     public Double getPosition() {
         return this.position;
     }
+
+    @Override
+    public Factions[] getFactions() {
+        return new Factions[0];
+    }
 }

@@ -360,7 +360,7 @@ class CharacterTest {
     @Test
     void theseThingsDoNotBelongToFactionsTheyAreNeutral() {
         //given
-        ArrayList<Character> factionCharacters=new ArrayList<Character>();
+        ArrayList<Character> factionCharacters=new ArrayList<>();
         for(Factions faction:Factions.values()){
             Character newFactionCharacter=new Character();
             newFactionCharacter.addFaction(faction);
