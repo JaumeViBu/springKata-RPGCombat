@@ -43,4 +43,8 @@ public class Prop implements IDamageable {
     public Factions[] getFactions() {
         return new Factions[0];
     }
+
+    public Boolean isDestroyed() {
+        return false;
+    }
 }

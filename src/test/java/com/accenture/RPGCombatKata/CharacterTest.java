@@ -356,7 +356,7 @@ class CharacterTest {
         assertEquals(100L,doorHealth);
     }
 
-    //These things do not belong to Factions; they are neutral.
+
     @Test
     void theseThingsDoNotBelongToFactionsTheyAreNeutral() {
         //given
@@ -378,6 +378,21 @@ class CharacterTest {
         //then
         assertEquals(0L,remainingHealth);
         assertEquals(0,propsFactions);
+    }
+
+
+    @Test
+    void whenReducedTo0HealthThingsAreDestroyed() {
+        //given
+        var pc=new Character();
+        var dummy=new Prop("dummy",50L);
+        //when
+        pc.dealsDamage(dummy,100L);
+        boolean isDummyDestroyed=dummy.isDestroyed();
+        long dummyHealth= dummy.getHealth();
+        //then
+        assertEquals(0L,dummyHealth);
+        assertEquals(true,isDummyDestroyed);
     }
 
 
